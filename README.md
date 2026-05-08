@@ -84,15 +84,8 @@ python -m pip install -r requirements.txt
 如果你的代码已经上传到 GitHub 或 Gitee，可以使用下面的命令克隆仓库：
 
 ```powershell
-git clone https://github.com/你的用户名/你的仓库名.git
-cd 你的仓库名
-```
-
-如果你使用的是 Gitee，也可以替换为：
-
-```powershell
-git clone https://gitee.com/你的用户名/你的仓库名.git
-cd 你的仓库名
+git clone https://github.com/hx123499/AI-TPOPIC.git
+cd AI-TPOPIC
 ```
 
 ### 5.2 创建并激活虚拟环境
@@ -231,8 +224,8 @@ python main.py
 如果你是第一次在新电脑上运行本项目，可以直接按下面顺序操作：
 
 ```powershell
-git clone https://github.com/你的用户名/你的仓库名.git
-cd 你的仓库名
+git clone https://github.com/hx123499/AI-TPOPIC.git
+cd AI-TPOPIC
 conda create -n work python=3.10 -y
 conda activate work
 python -m pip install --upgrade pip
