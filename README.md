@@ -77,7 +77,170 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-## 5. 依赖说明
+## 5. 代码克隆与完整使用流程
+
+### 5.1 克隆项目
+
+如果你的代码已经上传到 GitHub 或 Gitee，可以使用下面的命令克隆仓库：
+
+```powershell
+git clone https://github.com/你的用户名/你的仓库名.git
+cd 你的仓库名
+```
+
+如果你使用的是 Gitee，也可以替换为：
+
+```powershell
+git clone https://gitee.com/你的用户名/你的仓库名.git
+cd 你的仓库名
+```
+
+### 5.2 创建并激活虚拟环境
+
+推荐使用 Conda：
+
+```powershell
+conda create -n work python=3.10 -y
+conda activate work
+```
+
+如果你已经提前创建过环境，只需要激活即可：
+
+```powershell
+conda activate work
+```
+
+### 5.3 安装依赖
+
+进入项目根目录后执行：
+
+```powershell
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+建议始终使用 `python -m pip`，这样可以避免包装错到其他 Python 环境中。
+
+### 5.4 准备数据集
+
+请先从 NYC TLC 官方网站下载黄出租车 2023 年 1 月数据：
+
+- `yellow_tripdata_2023-01.parquet`
+
+下载完成后，将文件放到以下路径：
+
+```text
+data/raw/yellow_tripdata_2023-01.parquet
+```
+
+目录结构示例：
+
+```text
+data/
+├─ raw/
+│  └─ yellow_tripdata_2023-01.parquet
+└─ processed/
+```
+
+### 5.5 运行主程序
+
+在激活虚拟环境、安装依赖、放置好数据文件后，执行：
+
+```powershell
+python main.py
+```
+
+程序会自动完成：
+
+1. 数据加载
+2. 数据质量报告生成
+3. 数据清洗
+4. 特征工程
+5. 分析可视化
+6. 随机森林建模
+7. 神经网络建模
+8. 模型对比结果输出
+9. 命令行问答系统启动
+
+### 5.6 问答系统使用示例
+
+当程序运行到最后，会进入命令行问答模式：
+
+```text
+问答系统已启动，输入 exit 退出。
+请输入问题:
+```
+
+你可以输入如下问题：
+
+```text
+18点需求多少？
+工作日和周末订单量有什么区别？
+热门区域有哪些？
+车费和距离有什么关系？
+预测区域132在18点的需求
+高峰期平均行程时长是多少？
+随机森林和神经网络哪个更好？
+```
+
+退出方式：
+
+```text
+exit
+```
+
+### 5.7 可选：启用 Qwen 增强问答
+
+如果你希望启用 Qwen 作为规则问答的兜底解释层，需要先准备 DashScope API Key。
+
+在 PowerShell 中设置：
+
+```powershell
+$env:DASHSCOPE_API_KEY="你的真实API_KEY"
+$env:QWEN_MODEL="qwen-plus"
+```
+
+然后重新运行：
+
+```powershell
+python main.py
+```
+
+如果启用成功，问答系统会提示当前已启用 Qwen 兜底问答。
+
+### 5.8 输出文件说明
+
+程序运行完成后，会自动生成以下内容：
+
+- 清洗后数据：`data/processed/`
+- 图表文件：`outputs/figures/`
+- 报告文件：`outputs/reports/`
+
+其中包括：
+
+- `quality_report.csv`
+- `cleaning_summary.csv`
+- `random_forest_metrics.json`
+- `random_forest_feature_importance.csv`
+- `neural_network_metrics.json`
+- `model_comparison.md`
+- `nn_loss_curve.png`
+
+### 5.9 一次性复现流程汇总
+
+如果你是第一次在新电脑上运行本项目，可以直接按下面顺序操作：
+
+```powershell
+git clone https://github.com/你的用户名/你的仓库名.git
+cd 你的仓库名
+conda create -n work python=3.10 -y
+conda activate work
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python main.py
+```
+
+## 6. 依赖说明
 
 项目依赖如下：
 
@@ -101,7 +264,7 @@ openpyxl==3.1.5
 - `torch` 用于构建神经网络预测模型
 - `matplotlib` 与 `seaborn` 用于生成图表
 
-## 6. 运行方式
+## 7. 运行方式
 
 在激活虚拟环境后，直接运行：
 
@@ -121,7 +284,7 @@ python main.py
 8. 输出模型评价结果
 9. 进入命令行问答系统
 
-## 7. 各模块说明
+## 8. 各模块说明
 
 ### M1 数据处理
 
@@ -303,7 +466,7 @@ python main.py
 
 如果没有配置 API Key，系统仍然可以正常运行，只是只使用规则问答，不影响基础得分。
 
-## 8. 关键特征工程说明
+## 9. 关键特征工程说明
 
 基础时间特征：
 
@@ -321,7 +484,7 @@ python main.py
 
 这些特征既用于分析可视化，也用于后续需求预测。
 
-## 9. 输出结果说明
+## 10. 输出结果说明
 
 ### 报告类输出
 
@@ -351,7 +514,7 @@ python main.py
 - 神经网络 loss 曲线
 - 自选分析图
 
-## 10. 课程提交建议
+## 11. 课程提交建议
 
 提交到 GitHub/Gitee 前，建议确保仓库中包含：
 
@@ -369,7 +532,7 @@ python main.py
 - 如果原始数据文件过大，不适合直接上传 GitHub，可以在仓库说明中写明下载链接与放置路径
 - 如果课程要求必须包含 `data/` 目录，可以保留目录结构，并在 README 中注明原始文件名
 
-## 11. 已知注意事项
+## 12. 已知注意事项
 
 - 本项目默认原始数据文件为 `data/raw/yellow_tripdata_2023-01.parquet`
 - 若本地运行时出现 `torch` 导入失败，通常是因为没有激活正确的虚拟环境
@@ -381,13 +544,13 @@ python -m pip install -r requirements.txt
 
 而不是直接使用 `pip install -r requirements.txt`
 
-## 12. 后续可扩展方向
+## 13. 后续可扩展方向
 
 - 接入区域名称映射表，将 `PULocationID` 和 `DOLocationID` 显示为真实区域名称
 - 使用 Streamlit 或 Gradio 构建图形化可视化界面
 - 已接入 Qwen，可继续扩展 DeepSeek / GLM 等多模型兜底能力
 - 增加更多时序特征，提高需求预测精度
 
-## 13. 作者说明
+## 14. 作者说明
 
 本项目用于 AI 编程课程作业，重点展示数据处理、分析可视化、预测建模与规则问答系统的完整实现流程，同时保留了人机协作开发过程中的反思与记录。
