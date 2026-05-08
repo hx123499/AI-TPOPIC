@@ -1,0 +1,8 @@
+{
+  "model_name": "RandomForestRegressor",
+  "mae": 7.680418247460622,
+  "rmse": 15.806752803399398,
+  "train_samples": 53652,
+  "test_samples": 13414,
+  "feature_count": 263
+}

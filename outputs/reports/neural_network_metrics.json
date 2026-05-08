@@ -1,0 +1,10 @@
+{
+  "model_name": "PyTorchMLP",
+  "mae": 9.367135552105951,
+  "rmse": 19.837988966949617,
+  "train_samples": 53652,
+  "test_samples": 13414,
+  "feature_count": 263,
+  "epochs": 25,
+  "loss_curve_path": "E:\\python_work\\outputs\\figures\\nn_loss_curve.png"
+}

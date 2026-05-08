@@ -5,10 +5,5 @@ __pycache__/
 .ipynb_checkpoints/
 .vscode/
 
-outputs/figures/
-outputs/models/
-outputs/reports/
-data/processed/
-
 .DS_Store
 Thumbs.db
