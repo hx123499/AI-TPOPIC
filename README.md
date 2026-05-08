@@ -73,15 +73,11 @@ AI_Prog_HW/
 ```powershell
 conda create -n work python=3.10 -y
 conda activate work
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
 ```
 
 ## 5. 代码克隆与完整使用流程
 
 ### 5.1 克隆项目
-
-如果你的代码已经上传到 GitHub 或 Gitee，可以使用下面的命令克隆仓库：
 
 ```powershell
 git clone https://github.com/hx123499/AI-TPOPIC.git
