@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from src.analysis import run_all_analyses
-from src.data_loader import load_trip_data
+from src.data_loader import get_required_columns, load_trip_data
 from src.feature_engineering import add_time_features
 from src.model_nn import train_neural_network
 from src.model_rf import train_random_forest
@@ -16,7 +16,7 @@ def main() -> None:
     file_path = RAW_DIR / "yellow_tripdata_2023-01.parquet"
 
     print_step("加载数据")
-    df = load_trip_data(file_path)
+    df = load_trip_data(file_path, columns=get_required_columns())
     print(f"原始数据形状: {df.shape}")
 
     print_step("数据质量报告")
